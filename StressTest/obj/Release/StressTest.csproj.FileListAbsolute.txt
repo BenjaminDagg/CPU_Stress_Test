@@ -1,0 +1,15 @@
+C:\Users\Ben\source\repos\StressTest\StressTest\bin\Release\StressTest.exe.config
+C:\Users\Ben\source\repos\StressTest\StressTest\bin\Release\StressTest.exe
+C:\Users\Ben\source\repos\StressTest\StressTest\bin\Release\StressTest.pdb
+C:\Users\Ben\source\repos\StressTest\StressTest\obj\Release\StressTest.csprojAssemblyReference.cache
+C:\Users\Ben\source\repos\StressTest\StressTest\obj\Release\StressTest.CPUStressTest.resources
+C:\Users\Ben\source\repos\StressTest\StressTest\obj\Release\StressTest.Properties.Resources.resources
+C:\Users\Ben\source\repos\StressTest\StressTest\obj\Release\StressTest.csproj.GenerateResource.cache
+C:\Users\Ben\source\repos\StressTest\StressTest\obj\Release\StressTest.csproj.CoreCompileInputs.cache
+C:\Users\Ben\source\repos\StressTest\StressTest\obj\Release\StressTest.exe
+C:\Users\Ben\source\repos\StressTest\StressTest\obj\Release\StressTest.pdb
+C:\Users\Ben\source\repos\StressTest\StressTest\bin\Release\OpenHardwareMonitorLib.dll
+C:\Users\Ben\source\repos\StressTest\StressTest\obj\Release\StressTest.csproj.CopyComplete
+C:\Users\Ben\source\repos\StressTest\StressTest\bin\Release\Aga.Controls.dll
+C:\Users\Ben\source\repos\StressTest\StressTest\bin\Release\OxyPlot.dll
+C:\Users\Ben\source\repos\StressTest\StressTest\bin\Release\OxyPlot.WindowsForms.dll

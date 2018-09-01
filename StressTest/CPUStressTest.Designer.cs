@@ -4,6 +4,9 @@ namespace StressTest
 {
     partial class CPUStressTest
     {
+
+        private CPUStatManager cpuStats = new CPUStatManager();
+
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -36,11 +39,15 @@ namespace StressTest
             this.ToolBar = new System.Windows.Forms.ToolStrip();
             this.TestToolLabel = new System.Windows.Forms.ToolStripLabel();
             this.TestToolBtn = new System.Windows.Forms.ToolStripDropDownButton();
-            this.AboutToolLabel = new System.Windows.Forms.ToolStripLabel();
-            this.AboutToolBtn = new System.Windows.Forms.ToolStripDropDownButton();
             this.StartMenuOption = new System.Windows.Forms.ToolStripMenuItem();
-            this.AboutMenuOption = new System.Windows.Forms.ToolStripMenuItem();
             this.StopMenuOption = new System.Windows.Forms.ToolStripMenuItem();
+            this.OptionsToolLabel = new System.Windows.Forms.ToolStripLabel();
+            this.OptionsToolBtn = new System.Windows.Forms.ToolStripDropDownButton();
+            this.TimeUnitMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.TimeUnitSecondBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.TimeUnitMinBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.TimeUnitHrBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.AboutToolLabel = new System.Windows.Forms.ToolStripLabel();
             this.TitleLabel = new System.Windows.Forms.Label();
             this.CpuLabel = new System.Windows.Forms.Label();
             this.UserCpuLabel = new System.Windows.Forms.Label();
@@ -48,17 +55,15 @@ namespace StressTest
             this.UserCoreLabel = new System.Windows.Forms.Label();
             this.CoreTestLabel = new System.Windows.Forms.Label();
             this.UserCoreInput = new System.Windows.Forms.NumericUpDown();
-            this.TestTimer = new System.Windows.Forms.Timer(this.components);
             this.TimerLabel = new System.Windows.Forms.Label();
             this.TimerDurationInput = new System.Windows.Forms.NumericUpDown();
             this.StartTestBtn = new System.Windows.Forms.Button();
             this.TimerStatus = new System.Windows.Forms.Label();
-            this.OptionsToolLabel = new System.Windows.Forms.ToolStripLabel();
-            this.OptionsToolBtn = new System.Windows.Forms.ToolStripDropDownButton();
-            this.TimeUnitMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.TimeUnitSecondBtn = new System.Windows.Forms.ToolStripMenuItem();
-            this.TimeUnitMinBtn = new System.Windows.Forms.ToolStripMenuItem();
-            this.TimeUnitHrBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.CPUFreqLabel = new System.Windows.Forms.Label();
+            this.CPUFreqActual = new System.Windows.Forms.Label();
+            this.AboutToolBtn = new System.Windows.Forms.ToolStripDropDownButton();
+            this.AboutMenuOption = new System.Windows.Forms.ToolStripMenuItem();
+            this.TestTimer = new System.Windows.Forms.Timer(this.components);
             this.TabelLayout.SuspendLayout();
             this.ToolBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UserCoreInput)).BeginInit();
@@ -75,27 +80,30 @@ namespace StressTest
             this.TabelLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.TabelLayout.Controls.Add(this.ToolBar, 0, 0);
             this.TabelLayout.Controls.Add(this.TitleLabel, 1, 0);
-            this.TabelLayout.Controls.Add(this.CpuLabel, 1, 2);
-            this.TabelLayout.Controls.Add(this.UserCpuLabel, 2, 2);
-            this.TabelLayout.Controls.Add(this.CoreLabel, 1, 3);
-            this.TabelLayout.Controls.Add(this.UserCoreLabel, 2, 3);
-            this.TabelLayout.Controls.Add(this.CoreTestLabel, 1, 4);
-            this.TabelLayout.Controls.Add(this.UserCoreInput, 2, 4);
-            this.TabelLayout.Controls.Add(this.TimerLabel, 1, 5);
-            this.TabelLayout.Controls.Add(this.TimerDurationInput, 2, 5);
-            this.TabelLayout.Controls.Add(this.StartTestBtn, 1, 6);
-            this.TabelLayout.Controls.Add(this.TimerStatus, 2, 6);
+            this.TabelLayout.Controls.Add(this.CpuLabel, 1, 1);
+            this.TabelLayout.Controls.Add(this.UserCpuLabel, 2, 1);
+            this.TabelLayout.Controls.Add(this.CoreLabel, 0, 3);
+            this.TabelLayout.Controls.Add(this.UserCoreLabel, 1, 3);
+            this.TabelLayout.Controls.Add(this.CoreTestLabel, 0, 4);
+            this.TabelLayout.Controls.Add(this.UserCoreInput, 1, 4);
+            this.TabelLayout.Controls.Add(this.TimerLabel, 0, 5);
+            this.TabelLayout.Controls.Add(this.TimerDurationInput, 1, 5);
+            this.TabelLayout.Controls.Add(this.StartTestBtn, 1, 7);
+            this.TabelLayout.Controls.Add(this.TimerStatus, 2, 7);
+            this.TabelLayout.Controls.Add(this.CPUFreqLabel, 0, 6);
+            this.TabelLayout.Controls.Add(this.CPUFreqActual, 1, 6);
             this.TabelLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TabelLayout.Location = new System.Drawing.Point(0, 0);
             this.TabelLayout.Name = "TabelLayout";
-            this.TabelLayout.RowCount = 7;
+            this.TabelLayout.RowCount = 8;
             this.TabelLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TabelLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.50031F));
-            this.TabelLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.50031F));
-            this.TabelLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.50031F));
-            this.TabelLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.49906F));
-            this.TabelLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.TabelLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.TabelLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.091134F));
+            this.TabelLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.091134F));
+            this.TabelLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.091134F));
+            this.TabelLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090225F));
+            this.TabelLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
+            this.TabelLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.18182F));
+            this.TabelLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 36.36364F));
             this.TabelLayout.Size = new System.Drawing.Size(800, 450);
             this.TabelLayout.TabIndex = 0;
             this.TabelLayout.Paint += new System.Windows.Forms.PaintEventHandler(this.TabelLayout_Paint);
@@ -110,44 +118,12 @@ namespace StressTest
             this.TestToolBtn,
             this.OptionsToolLabel,
             this.OptionsToolBtn,
-            this.AboutToolLabel
-            });
+            this.AboutToolLabel});
             this.ToolBar.Location = new System.Drawing.Point(0, 0);
             this.ToolBar.Name = "ToolBar";
             this.ToolBar.Size = new System.Drawing.Size(800, 20);
             this.ToolBar.TabIndex = 0;
             this.ToolBar.Text = "toolStrip1";
-
-
-            //
-            // AboutToolLabel
-            //
-            this.AboutToolLabel.Name = "AboutToolLabel";
-            this.AboutToolLabel.Size = new System.Drawing.Size(28, 17);
-            this.AboutToolLabel.Text = "About";
-
-            // 
-            // AboutMenuOption
-            // 
-            this.AboutMenuOption.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.AboutMenuOption.Name = "AboutMenuOption";
-            this.AboutMenuOption.Size = new System.Drawing.Size(180, 22);
-            this.AboutMenuOption.Text = "About";
-            
-
-            //
-            // About tool btn
-            this.AboutToolBtn.BackColor = System.Drawing.Color.Transparent;
-            this.AboutToolBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.AboutToolBtn.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.AboutMenuOption});
-            this.AboutToolBtn.Image = ((System.Drawing.Image)(resources.GetObject("TestToolBtn.Image")));
-            this.AboutToolBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.AboutToolBtn.Name = "AboutToolBtn";
-            this.AboutToolBtn.Size = new System.Drawing.Size(29, 17);
-            this.AboutToolBtn.Text = "About";
-
-
             // 
             // TestToolLabel
             // 
@@ -155,7 +131,6 @@ namespace StressTest
             this.TestToolLabel.Size = new System.Drawing.Size(28, 17);
             this.TestToolLabel.Text = "Test";
             this.TestToolLabel.Click += new System.EventHandler(this.TestToolBtn_Click);
-           
             // 
             // TestToolBtn
             // 
@@ -174,7 +149,7 @@ namespace StressTest
             // 
             this.StartMenuOption.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.StartMenuOption.Name = "StartMenuOption";
-            this.StartMenuOption.Size = new System.Drawing.Size(180, 22);
+            this.StartMenuOption.Size = new System.Drawing.Size(98, 22);
             this.StartMenuOption.Text = "Start";
             this.StartMenuOption.Click += new System.EventHandler(this.StartBtn_Click);
             // 
@@ -182,138 +157,15 @@ namespace StressTest
             // 
             this.StopMenuOption.BackColor = System.Drawing.SystemColors.Control;
             this.StopMenuOption.Name = "StopMenuOption";
-            this.StopMenuOption.Size = new System.Drawing.Size(180, 22);
+            this.StopMenuOption.Size = new System.Drawing.Size(98, 22);
             this.StopMenuOption.Text = "Stop";
             this.StopMenuOption.Click += new System.EventHandler(this.StopBtn_Click);
-            // 
-            // TitleLabel
-            // 
-            this.TitleLabel.AutoSize = true;
-            this.TabelLayout.SetColumnSpan(this.TitleLabel, 4);
-            this.TitleLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
-            this.TitleLabel.Location = new System.Drawing.Point(3, 20);
-            this.TitleLabel.Name = "TitleLabel";
-            this.TitleLabel.Size = new System.Drawing.Size(794, 53);
-            this.TitleLabel.TabIndex = 1;
-            this.TitleLabel.Text = "CPU Stress Test";
-            this.TitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.TitleLabel.Click += new System.EventHandler(this.TitleLabel_Click);
-            // 
-            // CpuLabel
-            // 
-            this.CpuLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.CpuLabel.AutoSize = true;
-            this.CpuLabel.Location = new System.Drawing.Point(284, 93);
-            this.CpuLabel.Name = "CpuLabel";
-            this.CpuLabel.Size = new System.Drawing.Size(32, 13);
-            this.CpuLabel.TabIndex = 2;
-            this.CpuLabel.Text = "CPU:";
-            // 
-            // UserCpuLabel
-            // 
-            this.UserCpuLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.UserCpuLabel.AutoSize = true;
-            this.UserCpuLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UserCpuLabel.Location = new System.Drawing.Point(403, 93);
-            this.UserCpuLabel.Name = "UserCpuLabel";
-            this.UserCpuLabel.Size = new System.Drawing.Size(20, 12);
-            this.UserCpuLabel.TabIndex = 3;
-            this.UserCpuLabel.Text = "cpu";
-            // 
-            // CoreLabel
-            // 
-            this.CoreLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.CoreLabel.AutoSize = true;
-            this.CoreLabel.Location = new System.Drawing.Point(268, 146);
-            this.CoreLabel.Name = "CoreLabel";
-            this.CoreLabel.Size = new System.Drawing.Size(63, 13);
-            this.CoreLabel.TabIndex = 4;
-            this.CoreLabel.Text = "Core Count:";
-            // 
-            // UserCoreLabel
-            // 
-            this.UserCoreLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.UserCoreLabel.AutoSize = true;
-            this.UserCoreLabel.Location = new System.Drawing.Point(403, 146);
-            this.UserCoreLabel.Name = "UserCoreLabel";
-            this.UserCoreLabel.Size = new System.Drawing.Size(35, 13);
-            this.UserCoreLabel.TabIndex = 5;
-            this.UserCoreLabel.Text = "label1";
-            // 
-            // CoreTestLabel
-            // 
-            this.CoreTestLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.CoreTestLabel.AutoSize = true;
-            this.CoreTestLabel.Location = new System.Drawing.Point(260, 199);
-            this.CoreTestLabel.Name = "CoreTestLabel";
-            this.CoreTestLabel.Size = new System.Drawing.Size(79, 13);
-            this.CoreTestLabel.TabIndex = 6;
-            this.CoreTestLabel.Text = "# Cores to test:";
-            // 
-            // UserCoreInput
-            // 
-            this.UserCoreInput.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.UserCoreInput.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.UserCoreInput.Location = new System.Drawing.Point(403, 195);
-            this.UserCoreInput.Name = "UserCoreInput";
-            this.UserCoreInput.Size = new System.Drawing.Size(40, 20);
-            this.UserCoreInput.TabIndex = 7;
-            this.UserCoreInput.ValueChanged += new System.EventHandler(this.UserCoreInput_ValueChanged);
-            // 
-            // TestTimer
-            // 
-            this.TestTimer.Interval = 1000;
-            this.TestTimer.Tick += new System.EventHandler(this.TestTimer_Tick);
-            // 
-            // TimerLabel
-            // 
-            this.TimerLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.TimerLabel.AutoSize = true;
-            this.TimerLabel.Location = new System.Drawing.Point(250, 279);
-            this.TimerLabel.Name = "TimerLabel";
-            this.TimerLabel.Size = new System.Drawing.Size(99, 13);
-            this.TimerLabel.TabIndex = 8;
-            this.TimerLabel.Text = "Test Duration (min):";
-            // 
-            // TimerDurationInput
-            // 
-            this.TimerDurationInput.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.TimerDurationInput.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.TimerDurationInput.Location = new System.Drawing.Point(403, 275);
-            this.TimerDurationInput.Name = "TimerDurationInput";
-            this.TimerDurationInput.Size = new System.Drawing.Size(40, 20);
-            this.TimerDurationInput.TabIndex = 9;
-            this.TimerDurationInput.ValueChanged += new System.EventHandler(this.TimerDurationInput_ValueChanged);
-            // 
-            // StartTestBtn
-            // 
-            this.StartTestBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.StartTestBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.StartTestBtn.Location = new System.Drawing.Point(262, 383);
-            this.StartTestBtn.Name = "StartTestBtn";
-            this.StartTestBtn.Size = new System.Drawing.Size(75, 23);
-            this.StartTestBtn.TabIndex = 10;
-            this.StartTestBtn.Text = "Start";
-            this.StartTestBtn.UseVisualStyleBackColor = false;
-            this.StartTestBtn.Click += new System.EventHandler(this.StartTestBtn_Click);
-            // 
-            // TimerStatus
-            // 
-            this.TimerStatus.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.TimerStatus.AutoSize = true;
-            this.TimerStatus.Location = new System.Drawing.Point(403, 388);
-            this.TimerStatus.Name = "TimerStatus";
-            this.TimerStatus.Size = new System.Drawing.Size(35, 13);
-            this.TimerStatus.TabIndex = 11;
-            this.TimerStatus.Text = "label1";
             // 
             // OptionsToolLabel
             // 
             this.OptionsToolLabel.Name = "OptionsToolLabel";
             this.OptionsToolLabel.Size = new System.Drawing.Size(49, 17);
             this.OptionsToolLabel.Text = "Options";
-           
             // 
             // OptionsToolBtn
             // 
@@ -333,29 +185,196 @@ namespace StressTest
             this.TimeUnitMinBtn,
             this.TimeUnitHrBtn});
             this.TimeUnitMenu.Name = "TimeUnitMenu";
-            this.TimeUnitMenu.Size = new System.Drawing.Size(180, 22);
+            this.TimeUnitMenu.Size = new System.Drawing.Size(126, 22);
             this.TimeUnitMenu.Text = "Time Unit";
             // 
             // TimeUnitSecondBtn
             // 
             this.TimeUnitSecondBtn.Name = "TimeUnitSecondBtn";
-            this.TimeUnitSecondBtn.Size = new System.Drawing.Size(180, 22);
+            this.TimeUnitSecondBtn.Size = new System.Drawing.Size(112, 22);
             this.TimeUnitSecondBtn.Text = "second";
-            this.TimeUnitSecondBtn.Click += new System.EventHandler((sender,e)=>this.TimeUnitBtn_Click(sender,e,TimeUnit.SECOND));
+            this.TimeUnitSecondBtn.Click += new System.EventHandler((sender, e) => this.TimeUnitBtn_Click(sender, e, TimeUnit.SECOND));
             // 
             // TimeUnitMinBtn
             // 
             this.TimeUnitMinBtn.Name = "TimeUnitMinBtn";
-            this.TimeUnitMinBtn.Size = new System.Drawing.Size(180, 22);
+            this.TimeUnitMinBtn.Size = new System.Drawing.Size(112, 22);
             this.TimeUnitMinBtn.Text = "minute";
-            this.TimeUnitMinBtn.Click += new System.EventHandler((sender, e) => this.TimeUnitBtn_Click(sender, e,TimeUnit.MINUTE));
+            this.TimeUnitMinBtn.Click += new System.EventHandler((sender, e) => this.TimeUnitBtn_Click(sender, e, TimeUnit.MINUTE));
             // 
             // TimeUnitHrBtn
             // 
             this.TimeUnitHrBtn.Name = "TimeUnitHrBtn";
-            this.TimeUnitHrBtn.Size = new System.Drawing.Size(180, 22);
+            this.TimeUnitHrBtn.Size = new System.Drawing.Size(112, 22);
             this.TimeUnitHrBtn.Text = "hour";
-            this.TimeUnitHrBtn.Click += new System.EventHandler((sender, e) => this.TimeUnitBtn_Click(sender, e, TimeUnit.HOUR));
+            this.TimeUnitMinBtn.Click += new System.EventHandler((sender, e) => this.TimeUnitBtn_Click(sender, e, TimeUnit.HOUR));
+            // 
+            // AboutToolLabel
+            // 
+            this.AboutToolLabel.Name = "AboutToolLabel";
+            this.AboutToolLabel.Size = new System.Drawing.Size(40, 17);
+            this.AboutToolLabel.Text = "About";
+            // 
+            // TitleLabel
+            // 
+            this.TitleLabel.AutoSize = true;
+            this.TabelLayout.SetColumnSpan(this.TitleLabel, 4);
+            this.TitleLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.TitleLabel.Location = new System.Drawing.Point(3, 20);
+            this.TitleLabel.Name = "TitleLabel";
+            this.TitleLabel.Size = new System.Drawing.Size(794, 39);
+            this.TitleLabel.TabIndex = 1;
+            this.TitleLabel.Text = "CPU Stress Test";
+            this.TitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.TitleLabel.Click += new System.EventHandler(this.TitleLabel_Click);
+            // 
+            // CpuLabel
+            // 
+            this.CpuLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.CpuLabel.AutoSize = true;
+            this.CpuLabel.Location = new System.Drawing.Point(84, 72);
+            this.CpuLabel.Name = "CpuLabel";
+            this.CpuLabel.Size = new System.Drawing.Size(32, 13);
+            this.CpuLabel.TabIndex = 2;
+            this.CpuLabel.Text = "CPU:";
+            // 
+            // UserCpuLabel
+            // 
+            this.UserCpuLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.UserCpuLabel.AutoSize = true;
+            this.UserCpuLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UserCpuLabel.Location = new System.Drawing.Point(203, 72);
+            this.UserCpuLabel.Name = "UserCpuLabel";
+            this.UserCpuLabel.Size = new System.Drawing.Size(20, 12);
+            this.UserCpuLabel.TabIndex = 3;
+            this.UserCpuLabel.Text = "cpu";
+            // 
+            // CoreLabel
+            // 
+            this.CoreLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.CoreLabel.AutoSize = true;
+            this.CoreLabel.Location = new System.Drawing.Point(68, 111);
+            this.CoreLabel.Name = "CoreLabel";
+            this.CoreLabel.Size = new System.Drawing.Size(63, 13);
+            this.CoreLabel.TabIndex = 4;
+            this.CoreLabel.Text = "Core Count:";
+            // 
+            // UserCoreLabel
+            // 
+            this.UserCoreLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.UserCoreLabel.AutoSize = true;
+            this.UserCoreLabel.Location = new System.Drawing.Point(203, 111);
+            this.UserCoreLabel.Name = "UserCoreLabel";
+            this.UserCoreLabel.Size = new System.Drawing.Size(35, 13);
+            this.UserCoreLabel.TabIndex = 5;
+            this.UserCoreLabel.Text = "label1";
+            // 
+            // CoreTestLabel
+            // 
+            this.CoreTestLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.CoreTestLabel.AutoSize = true;
+            this.CoreTestLabel.Location = new System.Drawing.Point(60, 150);
+            this.CoreTestLabel.Name = "CoreTestLabel";
+            this.CoreTestLabel.Size = new System.Drawing.Size(79, 13);
+            this.CoreTestLabel.TabIndex = 6;
+            this.CoreTestLabel.Text = "# Cores to test:";
+            // 
+            // UserCoreInput
+            // 
+            this.UserCoreInput.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.UserCoreInput.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.UserCoreInput.Location = new System.Drawing.Point(203, 146);
+            this.UserCoreInput.Name = "UserCoreInput";
+            this.UserCoreInput.Size = new System.Drawing.Size(40, 20);
+            this.UserCoreInput.TabIndex = 7;
+            this.UserCoreInput.ValueChanged += new System.EventHandler(this.UserCoreInput_ValueChanged);
+            // 
+            // TimerLabel
+            // 
+            this.TimerLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TimerLabel.AutoSize = true;
+            this.TimerLabel.Location = new System.Drawing.Point(50, 189);
+            this.TimerLabel.Name = "TimerLabel";
+            this.TimerLabel.Size = new System.Drawing.Size(99, 13);
+            this.TimerLabel.TabIndex = 8;
+            this.TimerLabel.Text = "Test Duration (min):";
+            // 
+            // TimerDurationInput
+            // 
+            this.TimerDurationInput.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.TimerDurationInput.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.TimerDurationInput.Location = new System.Drawing.Point(203, 185);
+            this.TimerDurationInput.Name = "TimerDurationInput";
+            this.TimerDurationInput.Size = new System.Drawing.Size(40, 20);
+            this.TimerDurationInput.TabIndex = 9;
+            this.TimerDurationInput.ValueChanged += new System.EventHandler(this.TimerDurationInput_ValueChanged);
+            // 
+            // StartTestBtn
+            // 
+            this.StartTestBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.StartTestBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.StartTestBtn.Location = new System.Drawing.Point(262, 360);
+            this.StartTestBtn.Name = "StartTestBtn";
+            this.StartTestBtn.Size = new System.Drawing.Size(75, 23);
+            this.StartTestBtn.TabIndex = 10;
+            this.StartTestBtn.Text = "Start";
+            this.StartTestBtn.UseVisualStyleBackColor = false;
+            this.StartTestBtn.Click += new System.EventHandler(this.StartTestBtn_Click);
+            // 
+            // TimerStatus
+            // 
+            this.TimerStatus.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.TimerStatus.AutoSize = true;
+            this.TimerStatus.Location = new System.Drawing.Point(403, 365);
+            this.TimerStatus.Name = "TimerStatus";
+            this.TimerStatus.Size = new System.Drawing.Size(35, 13);
+            this.TimerStatus.TabIndex = 11;
+            this.TimerStatus.Text = "label1";
+            // 
+            // CPUFreqLabel
+            // 
+            this.CPUFreqLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.CPUFreqLabel.AutoSize = true;
+            this.CPUFreqLabel.Location = new System.Drawing.Point(58, 247);
+            this.CPUFreqLabel.Name = "CPUFreqLabel";
+            this.CPUFreqLabel.Size = new System.Drawing.Size(84, 13);
+            this.CPUFreqLabel.TabIndex = 14;
+            this.CPUFreqLabel.Text = "CPU Freq (mhz):";
+            // 
+            // CPUFreqActual
+            // 
+            this.CPUFreqActual.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.CPUFreqActual.AutoSize = true;
+            this.CPUFreqActual.Location = new System.Drawing.Point(203, 247);
+            this.CPUFreqActual.Name = "CPUFreqActual";
+            this.CPUFreqActual.Size = new System.Drawing.Size(35, 13);
+            this.CPUFreqActual.TabIndex = 15;
+            this.CPUFreqActual.Text = "label1";
+            // 
+            // AboutToolBtn
+            // 
+            this.AboutToolBtn.BackColor = System.Drawing.Color.Transparent;
+            this.AboutToolBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.AboutToolBtn.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.AboutMenuOption});
+            this.AboutToolBtn.Image = ((System.Drawing.Image)(resources.GetObject("AboutToolBtn.Image")));
+            this.AboutToolBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.AboutToolBtn.Name = "AboutToolBtn";
+            this.AboutToolBtn.Size = new System.Drawing.Size(29, 17);
+            this.AboutToolBtn.Text = "About";
+            // 
+            // AboutMenuOption
+            // 
+            this.AboutMenuOption.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.AboutMenuOption.Name = "AboutMenuOption";
+            this.AboutMenuOption.Size = new System.Drawing.Size(107, 22);
+            this.AboutMenuOption.Text = "About";
+            // 
+            // TestTimer
+            // 
+            this.TestTimer.Interval = 1000;
+            this.TestTimer.Tick += new System.EventHandler(this.TestTimer_Tick);
             // 
             // CPUStressTest
             // 
@@ -404,6 +423,8 @@ namespace StressTest
         private System.Windows.Forms.ToolStripMenuItem TimeUnitSecondBtn;
         private System.Windows.Forms.ToolStripMenuItem TimeUnitMinBtn;
         private System.Windows.Forms.ToolStripMenuItem TimeUnitHrBtn;
+        private Label CPUFreqLabel;
+        private Label CPUFreqActual;
     }
 }
 
