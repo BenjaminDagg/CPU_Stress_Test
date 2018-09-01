@@ -8,3 +8,6 @@ The program stresses your CPU by calculating extremely large prime numbers (insp
 First the program uses C#'s Management API to get information about your CPU like its 
 name and the number of logical processors it contains. Then it runs a prime number calculation algorithm
 on all threads to max out your CPU.
+
+## Download Link
+http://s000.tinyupload.com/index.php?file_id=74518692876620395537
