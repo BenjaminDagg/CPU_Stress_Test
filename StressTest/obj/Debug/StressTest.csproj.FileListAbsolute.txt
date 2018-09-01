@@ -1,0 +1,10 @@
+C:\Users\Ben\source\repos\StressTest\StressTest\bin\Debug\StressTest.exe.config
+C:\Users\Ben\source\repos\StressTest\StressTest\bin\Debug\StressTest.exe
+C:\Users\Ben\source\repos\StressTest\StressTest\bin\Debug\StressTest.pdb
+C:\Users\Ben\source\repos\StressTest\StressTest\obj\Debug\StressTest.csprojAssemblyReference.cache
+C:\Users\Ben\source\repos\StressTest\StressTest\obj\Debug\StressTest.Properties.Resources.resources
+C:\Users\Ben\source\repos\StressTest\StressTest\obj\Debug\StressTest.csproj.GenerateResource.cache
+C:\Users\Ben\source\repos\StressTest\StressTest\obj\Debug\StressTest.csproj.CoreCompileInputs.cache
+C:\Users\Ben\source\repos\StressTest\StressTest\obj\Debug\StressTest.exe
+C:\Users\Ben\source\repos\StressTest\StressTest\obj\Debug\StressTest.pdb
+C:\Users\Ben\source\repos\StressTest\StressTest\obj\Debug\StressTest.CPUStressTest.resources
