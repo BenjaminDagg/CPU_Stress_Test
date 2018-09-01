@@ -10,4 +10,4 @@ name and the number of logical processors it contains. Then it runs a prime numb
 on all threads to max out your CPU.
 
 ## Download Link
-http://s000.tinyupload.com/index.php?file_id=74518692876620395537
+http://s000.tinyupload.com/index.php?file_id=64614435075397988512
