@@ -10,7 +10,7 @@ using System.Diagnostics;
 
 namespace StressTest
 {
-    public class CPUStatManager : IVisitor
+    public class CPUStatManager 
     {
         public uint currFreq;
         public uint maxFreq;
@@ -21,30 +21,12 @@ namespace StressTest
         {
             this.currFreq = 0;
             this.maxFreq = 0;
-            getCPUFreq();
+            
             
         }
 
 
-        //sets computer object to look through
-        public void VisitComputer(IComputer computer)
-        {
-            computer.Traverse(this);
-        }
-
-
-        //iterates over hardware of computer
-        public void VisitHardware(IHardware hardware)
-        {
-            hardware.Update();
-            foreach (IHardware subHardware in hardware.SubHardware) subHardware.Accept(this);
-        }
-
-
-        public void VisitSensor(ISensor sensor) { }
-        public void VisitParameter(IParameter parameter) { }
-
-
+        
         //uses management api to get cpu frequency
         public void getCPUFreq()
         {

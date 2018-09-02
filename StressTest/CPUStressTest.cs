@@ -124,7 +124,11 @@ namespace StressTest
         public void startTest()
         {
 
-            setTimeUnit();
+            if (this.TimerDurationInput.Value < 1)
+            {
+                MessageBox.Show("Test duration cannot be zero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             //reset inputs
             this.isTesting = true;
@@ -163,6 +167,9 @@ namespace StressTest
         //makes all member threads end work
         public void endTest()
         {
+
+            
+
             //reset timer
             this.timer = 0;
 
@@ -207,24 +214,7 @@ namespace StressTest
 
 
 
-        public void setTimeUnit()
-        {
-            switch(this.TimerLabel.Text) 
-            {
-                case "Test Duration (sec)":
-                    this.testDuration = Convert.ToInt32(Math.Round(this.TimerDurationInput.Value, 0));
-                    break;
-                case "Test Duration (min)":
-                    this.testDuration = 60 * Convert.ToInt32(Math.Round(this.TimerDurationInput.Value, 0));
-                    break;
-                default:
-                    this.testDuration = 3600 * Convert.ToInt32(Math.Round(this.TimerDurationInput.Value, 0));
-                    break;
-            }
-
-            this.TimerProgressBar.Maximum = this.testDuration;
-
-        }
+        
 
 
         //event toolbar label is clciked
@@ -405,7 +395,8 @@ namespace StressTest
             this.TimerProgressBar.Value = this.timer;
             double progress = ((this.timer * 100) / this.testDuration);
             this.ProgressLabel.Text = "Progress: " + progress.ToString() + "%";
-           
+
+
         }
 
 
@@ -462,20 +453,26 @@ namespace StressTest
         //event triggered when a tim unit is selected from toolbar
         protected void TimeUnitBtn_Click(object sender, EventArgs e, TimeUnit unit)
         {
+           
+
             this.timeUnit = unit;
             string res = "";
             switch(unit)
             {
                 case TimeUnit.SECOND:
                     res = "sec";
+                    this.testDuration = Convert.ToInt32(Math.Round(this.TimerDurationInput.Value, 0));
                     break;
                 case TimeUnit.MINUTE:
                     res = "min";
+                    this.testDuration = 60 * Convert.ToInt32(Math.Round(this.TimerDurationInput.Value, 0));
                     break;
                 default:
                     res = "hr";
+                    this.testDuration = 3600 * Convert.ToInt32(Math.Round(this.TimerDurationInput.Value, 0));
                     break;
             }
+            this.TimerProgressBar.Maximum = this.testDuration;
             //update timer label with new unit
             this.TimerLabel.Text = "Test Duration (" + res + ")";
         }
