@@ -69,6 +69,9 @@
   <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Google-Noto-Emoji-Travel-Places-42697-fire.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Aga.Controls">
       <HintPath>..\..\..\..\Documents\openhardwaremonitor-v0.8.0-beta\Aga.Controls.dll</HintPath>
@@ -147,6 +150,7 @@
     <Folder Include="images\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Google-Noto-Emoji-Travel-Places-42697-fire.ico" />
     <Content Include="OpenHardwareMonitorLib.dll" />
   </ItemGroup>
   <ItemGroup>
