@@ -88,8 +88,14 @@ namespace StressTest
 
             //set cpu info
             this.CPUFreqActual.Text = this.cpuStats.currFreq.ToString();
-            
 
+            //setup progress bar
+            this.TimerProgressBar.Minimum = 0;
+            this.TimerProgressBar.Maximum = this.testDuration;
+            this.TimerProgressBar.Value = this.timer;
+            this.TimerProgressBar.Visible = false;
+            this.ProgressLabel.Text = "Progress: ";
+            this.ProgressLabel.Visible = false;
 
         }
 
@@ -117,10 +123,17 @@ namespace StressTest
         //starts all member threads to begin work
         public void startTest()
         {
+
+            setTimeUnit();
+
             //reset inputs
             this.isTesting = true;
             this.UserCoreInput.Enabled = false;
             this.TimerDurationInput.Enabled = false;
+
+            //enable progress bar
+            this.TimerProgressBar.Visible = true;
+            this.ProgressLabel.Visible = true;
 
             //change button to stop button
             this.StartTestBtn.Text = "Stop";
@@ -157,6 +170,10 @@ namespace StressTest
             this.isTesting = false;
             this.UserCoreInput.Enabled = true;
 
+            //keep state of progress bar
+            this.TimerProgressBar.Value = this.testDuration;
+            this.ProgressLabel.Visible = false;
+
             //change to start button
             //change button to stop button
             this.StartTestBtn.Text = "Start";
@@ -185,6 +202,27 @@ namespace StressTest
                 this.threads[i] = new Thread(() => nthPrime(PRIME_NUM));
             }
 
+
+        }
+
+
+
+        public void setTimeUnit()
+        {
+            switch(this.TimerLabel.Text) 
+            {
+                case "Test Duration (sec)":
+                    this.testDuration = Convert.ToInt32(Math.Round(this.TimerDurationInput.Value, 0));
+                    break;
+                case "Test Duration (min)":
+                    this.testDuration = 60 * Convert.ToInt32(Math.Round(this.TimerDurationInput.Value, 0));
+                    break;
+                default:
+                    this.testDuration = 3600 * Convert.ToInt32(Math.Round(this.TimerDurationInput.Value, 0));
+                    break;
+            }
+
+            this.TimerProgressBar.Maximum = this.testDuration;
 
         }
 
@@ -363,6 +401,10 @@ namespace StressTest
                 TestTimer.Enabled = false;
             }
 
+            //increment progress bar
+            this.TimerProgressBar.Value = this.timer;
+            double progress = ((this.timer * 100) / this.testDuration);
+            this.ProgressLabel.Text = "Progress: " + progress.ToString() + "%";
            
         }
 
@@ -391,6 +433,9 @@ namespace StressTest
                     this.testDuration = 3600 * Convert.ToInt32(Math.Round(this.TimerDurationInput.Value, 0));
                     break;
             }
+
+            //sets progress bar maximum to the time
+            this.TimerProgressBar.Maximum = this.testDuration;
 
 
             

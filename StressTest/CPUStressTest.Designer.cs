@@ -47,6 +47,10 @@ namespace StressTest
             this.TimeUnitSecondBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.TimeUnitMinBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.TimeUnitHrBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.HelpToolLabel = new System.Windows.Forms.ToolStripDropDownButton();
+            this.HelpMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.InfoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.TitleLabel = new System.Windows.Forms.Label();
             this.CpuLabel = new System.Windows.Forms.Label();
             this.UserCpuLabel = new System.Windows.Forms.Label();
@@ -60,13 +64,11 @@ namespace StressTest
             this.TimerStatus = new System.Windows.Forms.Label();
             this.CPUFreqLabel = new System.Windows.Forms.Label();
             this.CPUFreqActual = new System.Windows.Forms.Label();
+            this.TimerProgressBar = new System.Windows.Forms.ProgressBar();
             this.AboutToolBtn = new System.Windows.Forms.ToolStripDropDownButton();
             this.AboutMenuOption = new System.Windows.Forms.ToolStripMenuItem();
             this.TestTimer = new System.Windows.Forms.Timer(this.components);
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.HelpToolLabel = new System.Windows.Forms.ToolStripDropDownButton();
-            this.HelpMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.InfoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ProgressLabel = new System.Windows.Forms.Label();
             this.TabelLayout.SuspendLayout();
             this.ToolBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UserCoreInput)).BeginInit();
@@ -95,6 +97,8 @@ namespace StressTest
             this.TabelLayout.Controls.Add(this.TimerStatus, 2, 7);
             this.TabelLayout.Controls.Add(this.CPUFreqLabel, 0, 6);
             this.TabelLayout.Controls.Add(this.CPUFreqActual, 1, 6);
+            this.TabelLayout.Controls.Add(this.TimerProgressBar, 2, 5);
+            this.TabelLayout.Controls.Add(this.ProgressLabel, 2, 4);
             this.TabelLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TabelLayout.Location = new System.Drawing.Point(0, 0);
             this.TabelLayout.Name = "TabelLayout";
@@ -197,18 +201,50 @@ namespace StressTest
             this.TimeUnitSecondBtn.Name = "TimeUnitSecondBtn";
             this.TimeUnitSecondBtn.Size = new System.Drawing.Size(112, 22);
             this.TimeUnitSecondBtn.Text = "second";
+            this.TimeUnitSecondBtn.Click += new System.EventHandler((sender, e) => this.TimeUnitBtn_Click(sender, e, TimeUnit.SECOND));
             // 
             // TimeUnitMinBtn
             // 
             this.TimeUnitMinBtn.Name = "TimeUnitMinBtn";
             this.TimeUnitMinBtn.Size = new System.Drawing.Size(112, 22);
             this.TimeUnitMinBtn.Text = "minute";
+            this.TimeUnitMinBtn.Click += new System.EventHandler((sender, e) => this.TimeUnitBtn_Click(sender, e, TimeUnit.MINUTE));
             // 
             // TimeUnitHrBtn
             // 
             this.TimeUnitHrBtn.Name = "TimeUnitHrBtn";
             this.TimeUnitHrBtn.Size = new System.Drawing.Size(112, 22);
             this.TimeUnitHrBtn.Text = "hour";
+            this.TimeUnitHrBtn.Click += new System.EventHandler((sender, e) => this.TimeUnitBtn_Click(sender, e, TimeUnit.HOUR));
+            // 
+            // HelpToolLabel
+            // 
+            this.HelpToolLabel.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.HelpMenuItem,
+            this.InfoMenuItem});
+            this.HelpToolLabel.Name = "HelpToolLabel";
+            this.HelpToolLabel.Size = new System.Drawing.Size(53, 17);
+            this.HelpToolLabel.Text = "About";
+            this.HelpToolLabel.ToolTipText = "Help";
+            // 
+            // HelpMenuItem
+            // 
+            this.HelpMenuItem.Name = "HelpMenuItem";
+            this.HelpMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.HelpMenuItem.Text = "Help";
+            this.HelpMenuItem.Click += new System.EventHandler(this.HelpMenuItem_Click);
+            // 
+            // InfoMenuItem
+            // 
+            this.InfoMenuItem.Name = "InfoMenuItem";
+            this.InfoMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.InfoMenuItem.Text = "About Stress Test";
+            this.InfoMenuItem.Click += new System.EventHandler(this.InfoMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 20);
             // 
             // TitleLabel
             // 
@@ -347,6 +383,15 @@ namespace StressTest
             this.CPUFreqActual.TabIndex = 15;
             this.CPUFreqActual.Text = "label1";
             // 
+            // TimerProgressBar
+            // 
+            this.TimerProgressBar.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.TabelLayout.SetColumnSpan(this.TimerProgressBar, 2);
+            this.TimerProgressBar.Location = new System.Drawing.Point(403, 179);
+            this.TimerProgressBar.Name = "TimerProgressBar";
+            this.TimerProgressBar.Size = new System.Drawing.Size(250, 33);
+            this.TimerProgressBar.TabIndex = 16;
+            // 
             // AboutToolBtn
             // 
             this.AboutToolBtn.BackColor = System.Drawing.Color.Transparent;
@@ -371,34 +416,15 @@ namespace StressTest
             this.TestTimer.Interval = 1000;
             this.TestTimer.Tick += new System.EventHandler(this.TestTimer_Tick);
             // 
-            // toolStripSeparator1
+            // ProgressLabel
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 20);
-            // 
-            // HelpToolLabel
-            // 
-            this.HelpToolLabel.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.HelpMenuItem,
-            this.InfoMenuItem});
-            this.HelpToolLabel.Name = "HelpToolLabel";
-            this.HelpToolLabel.Size = new System.Drawing.Size(53, 17);
-            this.HelpToolLabel.Text = "About";
-            this.HelpToolLabel.ToolTipText = "Help";
-            // 
-            // HelpMenuItem
-            // 
-            this.HelpMenuItem.Name = "HelpMenuItem";
-            this.HelpMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.HelpMenuItem.Text = "Help";
-            this.HelpMenuItem.Click += new System.EventHandler(this.HelpMenuItem_Click);
-            // 
-            // InfoMenuItem
-            // 
-            this.InfoMenuItem.Name = "InfoMenuItem";
-            this.InfoMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.InfoMenuItem.Text = "About Stress Test";
-            this.InfoMenuItem.Click += new System.EventHandler(this.InfoMenuItem_Click);
+            this.ProgressLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.ProgressLabel.AutoSize = true;
+            this.ProgressLabel.Location = new System.Drawing.Point(403, 163);
+            this.ProgressLabel.Name = "ProgressLabel";
+            this.ProgressLabel.Size = new System.Drawing.Size(51, 13);
+            this.ProgressLabel.TabIndex = 17;
+            this.ProgressLabel.Text = "Progress:";
             // 
             // CPUStressTest
             // 
@@ -453,6 +479,8 @@ namespace StressTest
         private ToolStripMenuItem HelpMenuItem;
         private ToolStripMenuItem InfoMenuItem;
         private ToolStripSeparator toolStripSeparator1;
+        private ProgressBar TimerProgressBar;
+        private Label ProgressLabel;
     }
 }
 
