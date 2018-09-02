@@ -434,5 +434,17 @@ namespace StressTest
             //update timer label with new unit
             this.TimerLabel.Text = "Test Duration (" + res + ")";
         }
+
+        private void HelpMenuItem_Click(object sender, EventArgs e)
+        {
+            Form HelpMenu = new HelpForm();
+            HelpMenu.Show();
+        }
+
+        private void InfoMenuItem_Click(object sender, EventArgs e)
+        {
+            Form HelpMenu = new AboutForm();
+            HelpMenu.Show();
+        }
     }
 }

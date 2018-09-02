@@ -47,7 +47,6 @@ namespace StressTest
             this.TimeUnitSecondBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.TimeUnitMinBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.TimeUnitHrBtn = new System.Windows.Forms.ToolStripMenuItem();
-            this.AboutToolLabel = new System.Windows.Forms.ToolStripLabel();
             this.TitleLabel = new System.Windows.Forms.Label();
             this.CpuLabel = new System.Windows.Forms.Label();
             this.UserCpuLabel = new System.Windows.Forms.Label();
@@ -64,6 +63,10 @@ namespace StressTest
             this.AboutToolBtn = new System.Windows.Forms.ToolStripDropDownButton();
             this.AboutMenuOption = new System.Windows.Forms.ToolStripMenuItem();
             this.TestTimer = new System.Windows.Forms.Timer(this.components);
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.HelpToolLabel = new System.Windows.Forms.ToolStripDropDownButton();
+            this.HelpMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.InfoMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TabelLayout.SuspendLayout();
             this.ToolBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UserCoreInput)).BeginInit();
@@ -118,7 +121,8 @@ namespace StressTest
             this.TestToolBtn,
             this.OptionsToolLabel,
             this.OptionsToolBtn,
-            this.AboutToolLabel});
+            this.HelpToolLabel,
+            this.toolStripSeparator1});
             this.ToolBar.Location = new System.Drawing.Point(0, 0);
             this.ToolBar.Name = "ToolBar";
             this.ToolBar.Size = new System.Drawing.Size(800, 20);
@@ -193,27 +197,18 @@ namespace StressTest
             this.TimeUnitSecondBtn.Name = "TimeUnitSecondBtn";
             this.TimeUnitSecondBtn.Size = new System.Drawing.Size(112, 22);
             this.TimeUnitSecondBtn.Text = "second";
-            this.TimeUnitSecondBtn.Click += new System.EventHandler((sender, e) => this.TimeUnitBtn_Click(sender, e, TimeUnit.SECOND));
             // 
             // TimeUnitMinBtn
             // 
             this.TimeUnitMinBtn.Name = "TimeUnitMinBtn";
             this.TimeUnitMinBtn.Size = new System.Drawing.Size(112, 22);
             this.TimeUnitMinBtn.Text = "minute";
-            this.TimeUnitMinBtn.Click += new System.EventHandler((sender, e) => this.TimeUnitBtn_Click(sender, e, TimeUnit.MINUTE));
             // 
             // TimeUnitHrBtn
             // 
             this.TimeUnitHrBtn.Name = "TimeUnitHrBtn";
             this.TimeUnitHrBtn.Size = new System.Drawing.Size(112, 22);
             this.TimeUnitHrBtn.Text = "hour";
-            this.TimeUnitMinBtn.Click += new System.EventHandler((sender, e) => this.TimeUnitBtn_Click(sender, e, TimeUnit.HOUR));
-            // 
-            // AboutToolLabel
-            // 
-            this.AboutToolLabel.Name = "AboutToolLabel";
-            this.AboutToolLabel.Size = new System.Drawing.Size(40, 17);
-            this.AboutToolLabel.Text = "About";
             // 
             // TitleLabel
             // 
@@ -376,12 +371,42 @@ namespace StressTest
             this.TestTimer.Interval = 1000;
             this.TestTimer.Tick += new System.EventHandler(this.TestTimer_Tick);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 20);
+            // 
+            // HelpToolLabel
+            // 
+            this.HelpToolLabel.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.HelpMenuItem,
+            this.InfoMenuItem});
+            this.HelpToolLabel.Name = "HelpToolLabel";
+            this.HelpToolLabel.Size = new System.Drawing.Size(53, 17);
+            this.HelpToolLabel.Text = "About";
+            this.HelpToolLabel.ToolTipText = "Help";
+            // 
+            // HelpMenuItem
+            // 
+            this.HelpMenuItem.Name = "HelpMenuItem";
+            this.HelpMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.HelpMenuItem.Text = "Help";
+            this.HelpMenuItem.Click += new System.EventHandler(this.HelpMenuItem_Click);
+            // 
+            // InfoMenuItem
+            // 
+            this.InfoMenuItem.Name = "InfoMenuItem";
+            this.InfoMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.InfoMenuItem.Text = "About Stress Test";
+            this.InfoMenuItem.Click += new System.EventHandler(this.InfoMenuItem_Click);
+            // 
             // CPUStressTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.TabelLayout);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CPUStressTest";
             this.Text = "CPU Stress Test";
             this.TabelLayout.ResumeLayout(false);
@@ -400,7 +425,6 @@ namespace StressTest
         private System.Windows.Forms.ToolStrip ToolBar;
         private System.Windows.Forms.ToolStripLabel TestToolLabel;
         private System.Windows.Forms.ToolStripDropDownButton TestToolBtn;
-        private ToolStripLabel AboutToolLabel;
         private ToolStripDropDownButton AboutToolBtn;
         private System.Windows.Forms.ToolStripMenuItem StartMenuOption;
         private ToolStripMenuItem AboutMenuOption;
@@ -425,6 +449,10 @@ namespace StressTest
         private System.Windows.Forms.ToolStripMenuItem TimeUnitHrBtn;
         private Label CPUFreqLabel;
         private Label CPUFreqActual;
+        private ToolStripDropDownButton HelpToolLabel;
+        private ToolStripMenuItem HelpMenuItem;
+        private ToolStripMenuItem InfoMenuItem;
+        private ToolStripSeparator toolStripSeparator1;
     }
 }
 
