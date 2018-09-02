@@ -10,7 +10,7 @@ name and the number of logical processors it contains. Then it runs a prime numb
 on all threads to max out your CPU.
 
 ## Download Link
-http://s000.tinyupload.com/index.php?file_id=00857289733833242834
+http://s000.tinyupload.com/index.php?file_id=12992813888699228811
 
 ## Installation
 1. download StressTest.zip
