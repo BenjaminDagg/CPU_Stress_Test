@@ -10,8 +10,5 @@ C:\Users\Ben\source\repos\StressTest\StressTest\obj\Debug\StressTest.pdb
 C:\Users\Ben\source\repos\StressTest\StressTest\obj\Debug\StressTest.CPUStressTest.resources
 C:\Users\Ben\source\repos\StressTest\StressTest\obj\Debug\StressTest.csproj.CopyComplete
 C:\Users\Ben\source\repos\StressTest\StressTest\bin\Debug\Aga.Controls.dll
-C:\Users\Ben\source\repos\StressTest\StressTest\bin\Debug\OpenHardwareMonitorLib.dll
-C:\Users\Ben\source\repos\StressTest\StressTest\bin\Debug\OxyPlot.dll
-C:\Users\Ben\source\repos\StressTest\StressTest\bin\Debug\OxyPlot.WindowsForms.dll
 C:\Users\Ben\source\repos\StressTest\StressTest\obj\Debug\StressTest.AboutForm.resources
 C:\Users\Ben\source\repos\StressTest\StressTest\obj\Debug\StressTest.HelpForm.resources

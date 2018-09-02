@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Management;
-using OpenHardwareMonitor.Hardware;
 using System.Diagnostics;
 
 
@@ -21,8 +20,8 @@ namespace StressTest
         {
             this.currFreq = 0;
             this.maxFreq = 0;
-            
-            
+
+            getCPUFreq();
         }
 
 

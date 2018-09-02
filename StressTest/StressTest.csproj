@@ -73,19 +73,6 @@
     <Reference Include="Aga.Controls">
       <HintPath>..\..\..\..\Documents\openhardwaremonitor-v0.8.0-beta\Aga.Controls.dll</HintPath>
     </Reference>
-    <Reference Include="OpenHardwareMonitorLib, Version=0.8.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Documents\openhardwaremonitor-v0.8.0-beta\OpenHardwareMonitorLib.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="OxyPlot">
-      <HintPath>..\..\..\..\Documents\openhardwaremonitor-v0.8.0-beta\OxyPlot.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="OxyPlot.WindowsForms">
-      <HintPath>..\..\..\..\Documents\openhardwaremonitor-v0.8.0-beta\OxyPlot.WindowsForms.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Management" />
